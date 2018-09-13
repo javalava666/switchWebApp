@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <title>Switch Poker! by CLS</title>
+  <link rel="icon" href="icon.png">
+  <style>
+  #game {
+    background: darkgray;
+    height: 870px;
+    width: 1270px;
+    font-family: Arial;
+    font-size: 12pt;
+    font-weight: bold;
+    text-align: center;
+  }
+  #canvas {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    background: transparent;
+    cursor: pointer;
+    border: 4px silver double;
+    margin: 10px;
+    z-index: 10;
+  }
+  #robotCanvas {
+    position: absolute;
+    top: 400px;
+    left: 400px;
+    background: transparent;
+    cursor: pointer;
+    z-index: 1;
+  }
+  input {
+    background: navy;
+    color: silver;
+    font-family: Arial;
+    font-size: 14pt;
+    font-weight: bold;
+    border-radius: 10px;
+    height: 40px;
+    width: 120px;
+    margin: 5px;
+    padding: 5px;
+    z-index: 1000;
+  }
+  #controls {
+    position: absolute;
+    left: 1110px;
+    top: 10px;
+    display: block;
+  }
+  #timer1 {
+    position: absolute;
+    top: 725px;
+    left: 110px;
+    z-index: 20;
+  }
+  #timer2 {
+    position: absolute;
+    top: 725px;
+    left: 710px;
+    z-index: 20;
+  }
+  #nxtRnd {
+    position: absolute;
+    top: 800px;
+    left: 1130px;
+    z-index: 20;
+  }
+  td {
+    background: cornflowerblue;
+    font-family: Arial;
+    font-size: 12pt;
+    font-weight: bold;
+    text-align: center;
+    width: 42px;
+    height: 22px;
+    border: 1px solid black;
+  }
+  .pln {
+    background: darkgray;
+    font-family: Arial;
+    font-size: 12pt;
+    font-weight: bold;
+    text-align: center;
+    width: 30px;
+    height: 18px;
+    border: 1px solid darkgray;
+    border-bottom: 1px solid black;
+
+  }
+  .scr {
+    background: cornflowerblue;
+    color: yellow;
+    font-family: Arial;
+    font-size: 12pt;
+    font-weight: bold;
+    text-align: center;
+    width: 30px;
+    height: 18px;
+    border: 1px solid black;
+  }
+  table {
+    margin-left: 10px;
+    border: 1px solid black;
+    border-collapse: collapse;
+  }
+  #gameTo {
+    width: 50px;
+    height: 30px;
+    border-radius: 5px;
+    font-size: 11pt;
+    font-weight: bold;
+  }
+  #vid {
+    background: transparent;
+    margin: 20px;
+    margin-left: -100px;
+    z-index: 1000;
+  }
+  </style>
+</head>
+<body>
+  <div id="game">
+    <input id="timer1" type="button" value="P1 Start"/><br>
+    <input id="timer2" type="button" value="P2 Start"/><br>
+    <input id="nxtRnd" type="button" value="Next Round"/><br>
+    <canvas id="canvas" width="1100" height="850">Firefox &amp; IE Suck Ass
+    </canvas>
+    <canvas id="robotCanvas" width="400" height="470">Firefox &amp; IE Suck Ass
+    </canvas>
+    <div id="controls">
+      <input id="newGame" type="button" value="New Game"/><br><br>
+      <input id="deal" type="button" value="Deal"/><br><br>
+      <table>
+        <tr><td></td><td>P1</td><td>P2</td></tr>
+        <tr><td>R01</td><td class="scr" id="p1r01"></td><td class="scr" id="p2r01"></td></tr>
+        <tr><td>R02</td><td class="scr" id="p1r02"></td><td class="scr" id="p2r02"></td></tr>
+        <tr><td>R03</td><td class="scr" id="p1r03"></td><td class="scr" id="p2r03"></td></tr>
+        <tr><td>R04</td><td class="scr" id="p1r04"></td><td class="scr" id="p2r04"></td></tr>
+        <tr><td>R05</td><td class="scr" id="p1r05"></td><td class="scr" id="p2r05"></td></tr>
+        <tr><td>R06</td><td class="scr" id="p1r06"></td><td class="scr" id="p2r06"></td></tr>
+        <tr><td>R07</td><td class="scr" id="p1r07"></td><td class="scr" id="p2r07"></td></tr>
+        <tr><td>R08</td><td class="scr" id="p1r08"></td><td class="scr" id="p2r08"></td></tr>
+        <tr><td>R09</td><td class="scr" id="p1r09"></td><td class="scr" id="p2r09"></td></tr>
+        <tr><td>R10</td><td class="scr" id="p1r10"></td><td class="scr" id="p2r10"></td></tr>
+        <tr><td>R11</td><td class="scr" id="p1r11"></td><td class="scr" id="p2r11"></td></tr>
+        <tr><td>R12</td><td class="scr" id="p1r12"></td><td class="scr" id="p2r12"></td></tr>
+        <tr><td>R13</td><td class="scr" id="p1r13"></td><td class="scr" id="p2r13"></td></tr>
+        <tr><td>R14</td><td class="scr" id="p1r14"></td><td class="scr" id="p2r14"></td></tr>
+        <tr><td>R15</td><td class="scr" id="p1r15"></td><td class="scr" id="p2r15"></td></tr>
+        <tr><td>R16</td><td class="scr" id="p1r16"></td><td class="scr" id="p2r16"></td></tr>
+        <tr><td>R17</td><td class="scr" id="p1r17"></td><td class="scr" id="p2r17"></td></tr>
+        <tr><td>R18</td><td class="scr" id="p1r18"></td><td class="scr" id="p2r18"></td></tr>
+        <tr><td>R19</td><td class="scr" id="p1r19"></td><td class="scr" id="p2r19"></td></tr>
+        <tr><td>R20</td><td class="scr" id="p1r20"></td><td class="scr" id="p2r20"></td></tr>
+        <tr><td>R21</td><td class="scr" id="p1r21"></td><td class="scr" id="p2r21"></td></tr>
+        <tr><td>R22</td><td class="scr" id="p1r22"></td><td class="scr" id="p2r22"></td></tr>
+        <tr><td class="pln"></td><td class="pln"></td><td class="pln"></td></tr>
+        <tr><td>Total </td><td class="scr" id="p1gt"></td><td class="scr" id="p2gt"></td></tr>
+      </table>
+      <label>&nbsp;&nbsp;Play To:</label><input type="number" id="gameTo" value="11">
+    </div>
+  </div>
+<script src="pokerHands.js"></script>
+<script src="switchPoker.js"></script>
+<script src="drawRobot.js"></script>
+</body>
+</html>
